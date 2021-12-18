@@ -5,10 +5,10 @@ import React from 'react';
 function App() {
   return (
     <>
-      <Header/>
-      <TodoList/>
+      <Header />
+      <TodoList />
+      <p>Drag and drop to reorder list</p>
     </>
-    
   );
 }
 

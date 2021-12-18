@@ -1,11 +1,25 @@
 import { ToDo } from './Todo';
 import { TodoFilter } from './TodoFilter';
+import { TodoItem } from '../../../types/Todo/todo-type';
 
-export const TodoDisplay = () => {
+type TodoDisplayProps = {
+  todoList: TodoItem[];
+};
+
+export const TodoDisplay = ({ todoList }: TodoDisplayProps) => {
   return (
     <section>
-      <div></div>
-      {/* Maps over the todo array and creates various Todos */}
+      <ul>
+        {todoList.map((item, index) => (
+          <ToDo
+            key={index}
+            status={item.status}
+            changeStatus={() => console.log('Changing Status')}
+            todoText={item.text}
+            deleteTodo={() => console.log('Deleting Todo')}
+          />
+        ))}
+      </ul>
       <TodoFilter
         todoCount={4}
         listFilter="all"

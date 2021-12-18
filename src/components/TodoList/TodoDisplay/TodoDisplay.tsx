@@ -21,7 +21,7 @@ export const TodoDisplay = ({ todoList }: TodoDisplayProps) => {
         ))}
       </ul>
       <TodoFilter
-        todoCount={4}
+        todoCount={todoList.length}
         listFilter="all"
         clearCompleted={() => console.log('Clearing Completed')}
       />

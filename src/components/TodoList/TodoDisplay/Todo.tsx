@@ -12,12 +12,12 @@ export const ToDo = ({
   deleteTodo,
 }: ToDoProps) => {
   return (
-    <div>
+    <li>
       <label htmlFor="Change Todo Status">
         <input type="checkbox" checked={status} onChange={changeStatus} />
       </label>
       <p>{todoText}</p>
       <button onClick={deleteTodo}>X</button>
-    </div>
+    </li>
   );
 };

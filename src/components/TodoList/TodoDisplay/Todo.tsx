@@ -1,7 +1,8 @@
 type ToDoProps = {
   status: boolean;
-  changeStatus: () => void;
   todoText: string;
+  todoID: number;
+  changeStatus: () => void;
   deleteTodo: () => void;
 };
 

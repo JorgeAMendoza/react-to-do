@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { TodoItem } from '../../../types/Todo/todo-type';
+import { generateTodoID } from '../../../utils/todo-helpers/generate-id';
 
 type newTaskProps = {
   updateTaskList: (newTask: TodoItem) => void;
@@ -13,6 +14,7 @@ export const NewTask = ({ updateTaskList }: newTaskProps) => {
     const task = {
       status: taskStatus,
       text: inputText,
+      id: generateTodoID(),
     };
     setInputText('');
     setTaskStatus(false);

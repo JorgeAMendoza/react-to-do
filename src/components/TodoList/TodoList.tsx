@@ -4,14 +4,15 @@ import { TodoDisplay } from './TodoDisplay/TodoDisplay';
 import { TodoItem } from '../../types/Todo/todo-type';
 import { filterState } from '../../types/Todo/filter-state';
 import * as filterCallbacks from '../../utils/todo-filters/todo-filters';
+import { generateTodoID } from '../../utils/todo-helpers/generate-id';
 
 export const TodoList = () => {
   const [toDoList, setToDoList] = useState<TodoItem[]>([
-    { status: true, text: 'Walk the dog' },
-    { status: false, text: 'Learn to read' },
-    { status: false, text: 'Complete Halo 3: ODST' },
+    { status: true, text: 'Walk the dog', id: generateTodoID() },
+    { status: false, text: 'Learn to read', id: generateTodoID() },
+    { status: false, text: 'Complete Halo 3: ODST', id: generateTodoID() },
   ]);
-  const [filter, setFilter] = useState<filterState>('active');
+  const [filter, setFilter] = useState<filterState>('all');
 
   // So we may need to create various functions that handle modifying parts/aspects of our todo list.
   // Updating the status of any of the todo list, basically true/false

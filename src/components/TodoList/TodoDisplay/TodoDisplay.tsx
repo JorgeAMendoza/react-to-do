@@ -12,13 +12,14 @@ export const TodoDisplay = ({ todoList, filter }: TodoDisplayProps) => {
   return (
     <section>
       <ul>
-        {todoList.map((item, index) => (
+        {todoList.map((item) => (
           <ToDo
-            key={index}
+            key={item.id}
             status={item.status}
             changeStatus={() => console.log('Changing Status')}
             todoText={item.text}
             deleteTodo={() => console.log('Deleting Todo')}
+            todoID={item.id}
           />
         ))}
       </ul>

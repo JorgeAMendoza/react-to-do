@@ -18,11 +18,6 @@ export const TodoList = () => {
   // Updating the status of any of the todo list, basically true/false
   // Deleting an item from our todolist.
 
-  // Handling the filter.
-  // Function One, grab all of them, this function should really just return true so that when its used by filter, every item is returned into the new array.
-  // Funciton two, function that checks to see if status is true.
-  // Function three, function that checks to see if status if false.
-
   const generateTodos = (): TodoItem[] => {
     if (filter === 'all')
       return toDoList.filter(filterCallbacks.generateAllTodos);
@@ -33,13 +28,27 @@ export const TodoList = () => {
 
   const changeFilter = (filterStatus: filterState) => setFilter(filterStatus);
 
+  const deleteTodoItem = (todoID: number) => {
+    for (let i = 0; i < toDoList.length; i += 1) {
+      if (toDoList[i].id === todoID) {
+        const newList = toDoList.slice(0, i).concat(toDoList.slice(i + 1));
+        setToDoList(newList);
+        return;
+      }
+    }
+  };
+
   const insertNewTask = (newTask: TodoItem) => {
     setToDoList(toDoList.concat(newTask));
   };
   return (
     <main>
       <NewTask updateTaskList={insertNewTask} />
-      <TodoDisplay todoList={generateTodos()} filter={changeFilter} />
+      <TodoDisplay
+        todoList={generateTodos()}
+        filter={changeFilter}
+        deleteTodo={deleteTodoItem}
+      />
     </main>
   );
 };

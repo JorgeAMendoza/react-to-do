@@ -3,13 +3,14 @@ type ToDoProps = {
   todoText: string;
   todoID: number;
   changeStatus: () => void;
-  deleteTodo: () => void;
+  deleteTodo: (todoID: number) => void;
 };
 
 export const ToDo = ({
   status,
   changeStatus,
   todoText,
+  todoID,
   deleteTodo,
 }: ToDoProps) => {
   return (
@@ -18,7 +19,7 @@ export const ToDo = ({
         <input type="checkbox" checked={status} onChange={changeStatus} />
       </label>
       <p>{todoText}</p>
-      <button onClick={deleteTodo}>X</button>
+      <button onClick={() => deleteTodo(todoID)}>X</button>
     </li>
   );
 };

@@ -2,9 +2,8 @@ import { useState } from 'react';
 import { NewTask } from './NewTask/NewTask';
 import { TodoDisplay } from './TodoDisplay/TodoDisplay';
 import { TodoItem } from '../../types/Todo/todo-type';
+import { filterState } from '../../types/Todo/filter-state';
 import * as filterCallbacks from '../../utils/todo-filters/todo-filters';
-
-type filterState = 'all' | 'active' | 'completed';
 
 export const TodoList = () => {
   const [toDoList, setToDoList] = useState<TodoItem[]>([
@@ -31,13 +30,15 @@ export const TodoList = () => {
     else return toDoList.filter(filterCallbacks.genrateCompletedTodos);
   };
 
+  const changeFilter = (filterStatus: filterState) => setFilter(filterStatus);
+
   const insertNewTask = (newTask: TodoItem) => {
     setToDoList(toDoList.concat(newTask));
   };
   return (
     <main>
       <NewTask updateTaskList={insertNewTask} />
-      <TodoDisplay todoList={generateTodos()} />
+      <TodoDisplay todoList={generateTodos()} filter={changeFilter} />
     </main>
   );
 };

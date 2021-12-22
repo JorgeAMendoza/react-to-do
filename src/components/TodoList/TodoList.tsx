@@ -41,13 +41,18 @@ export const TodoList = () => {
   const insertNewTask = (newTask: TodoItem) => {
     setToDoList(toDoList.concat(newTask));
   };
+
+  const clearCompleted = () => {
+    console.log('Clearing Completed Task');
+  };
   return (
     <main>
       <NewTask updateTaskList={insertNewTask} />
       <TodoDisplay
         todoList={generateTodos()}
-        filter={changeFilter}
+        setFilter={changeFilter}
         deleteTodo={deleteTodoItem}
+        clearCompleted={clearCompleted}
       />
     </main>
   );

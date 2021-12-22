@@ -1,15 +1,7 @@
-import { filterState } from '../../../types/Todo/filter-state';
-
-type TodoFilterProps = {
-  todoCount: number;
-  listFilter: string;
-  clearCompleted: () => void;
-  setFilter: (filterStatus: filterState) => void;
-};
+import { TodoFilterProps } from '../../../types/TodoProps/todo-filter-props';
 
 export const TodoFilter = ({
   todoCount,
-  listFilter,
   clearCompleted,
   setFilter,
 }: TodoFilterProps) => {

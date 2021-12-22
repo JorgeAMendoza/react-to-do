@@ -1,15 +1,13 @@
 import { ToDo } from './Todo';
 import { TodoFilter } from './TodoFilter';
-import { filterState } from '../../../types/Todo/filter-state';
-import { TodoItem } from '../../../types/Todo/todo-type';
+import { TodoDisplayProps } from '../../../types/TodoProps/todo-display-props';
 
-type TodoDisplayProps = {
-  todoList: TodoItem[];
-  filter: (filterStatus: filterState) => void;
-  deleteTodo: (todoID: number) => void;
-};
-
-export const TodoDisplay = ({ todoList, filter, deleteTodo } : TodoDisplayProps) => {
+export const TodoDisplay = ({
+  todoList,
+  setFilter,
+  deleteTodo,
+  clearCompleted,
+}: TodoDisplayProps) => {
   return (
     <section>
       <ul>
@@ -26,9 +24,8 @@ export const TodoDisplay = ({ todoList, filter, deleteTodo } : TodoDisplayProps)
       </ul>
       <TodoFilter
         todoCount={todoList.length}
-        listFilter="all"
         clearCompleted={() => console.log('Clearing Completed')}
-        setFilter={filter}
+        setFilter={setFilter}
       />
     </section>
   );

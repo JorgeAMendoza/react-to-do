@@ -14,9 +14,21 @@ export const TodoList = () => {
   ]);
   const [filter, setFilter] = useState<filterState>('all');
 
-  // So we may need to create various functions that handle modifying parts/aspects of our todo list.
-  // Updating the status of any of the todo list, basically true/false
-  // Deleting an item from our todolist.
+  const updateTodoStatus = (todoID: number) => {
+    for (let i = 0; i < toDoList.length; i += 1) {
+      if (toDoList[i].id === todoID) {
+        const currentStatus = toDoList[i].status;
+        const updatedTodo = Object.assign({}, toDoList[i], {
+          status: currentStatus ? false : true,
+        });
+
+        const updatedList = toDoList
+          .slice(0, i)
+          .concat(updatedTodo, toDoList.slice(i + 1));
+        setToDoList(updatedList);
+      }
+    }
+  };
 
   const generateTodos = (): TodoItem[] => {
     if (filter === 'all')
@@ -54,6 +66,7 @@ export const TodoList = () => {
         setFilter={changeFilter}
         deleteTodo={deleteTodoItem}
         clearCompleted={clearCompleted}
+        updateTodoStatus={updateTodoStatus}
       />
     </main>
   );

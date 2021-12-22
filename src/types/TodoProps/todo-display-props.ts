@@ -6,4 +6,5 @@ export type TodoDisplayProps = {
   setFilter: (filterStatus: filterState) => void;
   deleteTodo: (todoID: number) => void;
   clearCompleted: () => void;
+  updateTodoStatus: (todoID: number) => void
 };

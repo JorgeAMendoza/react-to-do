@@ -7,6 +7,7 @@ export const TodoDisplay = ({
   setFilter,
   deleteTodo,
   clearCompleted,
+  updateTodoStatus,
 }: TodoDisplayProps) => {
   return (
     <section>
@@ -15,10 +16,10 @@ export const TodoDisplay = ({
           <ToDo
             key={item.id}
             status={item.status}
-            changeStatus={() => console.log('Changing Status')}
             todoText={item.text}
             deleteTodo={deleteTodo}
             todoID={item.id}
+            updateTodoStatus={updateTodoStatus}
           />
         ))}
       </ul>

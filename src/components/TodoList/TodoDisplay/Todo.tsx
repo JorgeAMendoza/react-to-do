@@ -1,10 +1,4 @@
-type ToDoProps = {
-  status: boolean;
-  todoText: string;
-  todoID: number;
-  changeStatus: () => void;
-  deleteTodo: (todoID: number) => void;
-};
+import { TodoProps } from '../../../types/TodoProps/todo-props';
 
 export const ToDo = ({
   status,
@@ -12,7 +6,7 @@ export const ToDo = ({
   todoText,
   todoID,
   deleteTodo,
-}: ToDoProps) => {
+}: TodoProps) => {
   return (
     <li>
       <label htmlFor="Change Todo Status">

@@ -43,7 +43,8 @@ export const TodoList = () => {
   };
 
   const clearCompleted = () => {
-    console.log('Clearing Completed Task');
+    const onlyActiveTask = toDoList.filter((task) => !task.status);
+    setToDoList(onlyActiveTask);
   };
   return (
     <main>

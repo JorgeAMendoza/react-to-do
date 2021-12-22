@@ -24,7 +24,7 @@ export const TodoDisplay = ({
       </ul>
       <TodoFilter
         todoCount={todoList.length}
-        clearCompleted={() => console.log('Clearing Completed')}
+        clearCompleted={clearCompleted}
         setFilter={setFilter}
       />
     </section>

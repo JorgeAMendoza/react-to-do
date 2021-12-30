@@ -3,10 +3,12 @@ import { NewTask } from './NewTask/NewTask';
 import { TodoDisplay } from './TodoDisplay/TodoDisplay';
 import { TodoItem } from '../../types/Todo/todo-type';
 import { filterState } from '../../types/Todo/filter-state';
-import * as filterCallbacks from '../../utils/todo-filters/todo-filters';
+import { todoListMethods } from '../../utils/todo-list/todo-list-methods';
+
+const listMethods = todoListMethods();
 
 export const TodoList = () => {
-  const [toDoList, setToDoList] = useState<TodoItem[]>([]);
+  const [todoList, setToDoList] = useState<TodoItem[]>([]);
   const [filter, setFilter] = useState<filterState>('all');
 
   useEffect(() => {
@@ -15,63 +17,31 @@ export const TodoList = () => {
     else return;
   }, []);
 
-  const updateTodoStatus = (todoID: number) => {
-    for (let i = 0; i < toDoList.length; i += 1) {
-      if (toDoList[i].id === todoID) {
-        const currentStatus = toDoList[i].status;
-        const updatedTodo = Object.assign({}, toDoList[i], {
-          status: currentStatus ? false : true,
-        });
+  const insertNewTodo = (newTask: TodoItem) =>
+    listMethods.insertNewTask(newTask, todoList, setToDoList);
 
-        const updatedList = toDoList
-          .slice(0, i)
-          .concat(updatedTodo, toDoList.slice(i + 1));
-        setToDoList(updatedList);
-        localStorage.setItem('todos', JSON.stringify(updatedList));
-      }
-    }
-  };
+  const clearCompletedTodos = () =>
+    listMethods.clearCompleted(todoList, setToDoList);
 
-  const generateTodos = (): TodoItem[] => {
-    if (filter === 'all')
-      return toDoList.filter(filterCallbacks.generateAllTodos);
-    else if (filter === 'active')
-      return toDoList.filter(filterCallbacks.generateActiveTodos);
-    else return toDoList.filter(filterCallbacks.genrateCompletedTodos);
-  };
+  const changeTodoListFilter = (newFilter: filterState) =>
+    listMethods.changeFilter(newFilter, setFilter);
 
-  const changeFilter = (filterStatus: filterState) => setFilter(filterStatus);
+  const generateTodoList = () => listMethods.generateTodos(filter, todoList);
 
-  const deleteTodoItem = (todoID: number) => {
-    for (let i = 0; i < toDoList.length; i += 1) {
-      if (toDoList[i].id === todoID) {
-        const newList = toDoList.slice(0, i).concat(toDoList.slice(i + 1));
-        setToDoList(newList);
-        localStorage.setItem('todos', JSON.stringify(newList));
-        return;
-      }
-    }
-  };
+  const deleteTodo = (todoID: number) =>
+    listMethods.deleteTodoItem(todoID, todoList, setToDoList);
 
-  const insertNewTask = (newTask: TodoItem) => {
-    const newList = toDoList.concat(newTask);
-    setToDoList(newList);
-    localStorage.setItem('todos', JSON.stringify(newList));
-  };
+  const updateTodoStatus = (todoID: number) =>
+    listMethods.updateTodoStatus(todoID, todoList, setToDoList);
 
-  const clearCompleted = () => {
-    const newList = toDoList.filter((task) => !task.status);
-    setToDoList(newList);
-    localStorage.setItem('todos', JSON.stringify(newList));
-  };
   return (
     <main>
-      <NewTask updateTaskList={insertNewTask} />
+      <NewTask updateTaskList={insertNewTodo} />
       <TodoDisplay
-        todoList={generateTodos()}
-        setFilter={changeFilter}
-        deleteTodo={deleteTodoItem}
-        clearCompleted={clearCompleted}
+        todoList={generateTodoList()}
+        setFilter={changeTodoListFilter}
+        deleteTodo={deleteTodo}
+        clearCompleted={clearCompletedTodos}
         updateTodoStatus={updateTodoStatus}
       />
     </main>

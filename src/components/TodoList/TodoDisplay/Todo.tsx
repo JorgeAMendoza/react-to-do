@@ -1,3 +1,4 @@
+import { useDrag } from 'react-dnd';
 import { TodoProps } from '../../../types/TodoProps/todo-props';
 
 export const ToDo = ({
@@ -7,8 +8,12 @@ export const ToDo = ({
   deleteTodo,
   updateTodoStatus,
 }: TodoProps) => {
+  const [collected, drag, dragPreview] = useDrag(() => ({
+    type: 'TODO_DRAG',
+    item: { todoID },
+  }));
   return (
-    <li>
+    <li ref={drag}>
       <label htmlFor="Change Todo Status">
         <input
           type="checkbox"

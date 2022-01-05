@@ -21,7 +21,7 @@ function App() {
     <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
       <DndProvider backend={HTML5Backend}>
         <GlobalStyles />
-        <Header />
+        <Header toggleTheme={toggleTheme} />
         <TodoList />
         <p>Drag and drop to reorder list</p>
       </DndProvider>

@@ -17,8 +17,12 @@ export const GlobalStyles = createGlobalStyle`
     font-family: 'Josefin Sans', sans-serif;
     font-size: 1.6rem;
     min-height: 100vh;
-    background-color: #fafafa;
     position: relative;
+    background: url(${({ theme }) =>
+      theme.backgroundImageMobile}) no-repeat, ${({ theme }) =>
+  theme.backgroundColor};
+    background-size: 100%;
+    color:${({ theme }) => theme.color.primary};
   }
   a,
   button {
@@ -26,6 +30,7 @@ export const GlobalStyles = createGlobalStyle`
     cursor: pointer;
     border: none;
     font-family: inherit;
+    background: transparent;
   }
   a:hover {
     text-decoration: underline;

@@ -15,7 +15,7 @@ const lightTheme: DefaultTheme = {
     active: '#3A7CFD',
   },
   todo: {
-    backgroundColor: '#fff',
+    backgroundColor: '#fff ',
   },
 };
 

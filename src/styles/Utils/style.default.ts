@@ -13,6 +13,7 @@ declare module 'styled-components' {
     };
     todo: {
       backgroundColor: string;
+      borderColor: string;
     };
   }
 }

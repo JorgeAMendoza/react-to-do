@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const StyledNewTask = styled.div`
   background-color: ${({ theme }) => theme.todo.backgroundColor};
-  padding: 0.4em 1.5em;
+  padding: 0.6em 0.8em;
   border-radius: 5px;
 
   form {

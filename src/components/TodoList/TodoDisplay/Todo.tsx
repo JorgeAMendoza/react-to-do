@@ -1,5 +1,7 @@
 import { useDrag } from 'react-dnd';
 import { TodoProps } from '../../../types/TodoProps/todo-props';
+import { Cross } from './Cross';
+import { TodoStyled } from '../../../styles/TodoList/Todo/Todo.styled';
 
 export const ToDo = ({
   status,
@@ -13,16 +15,19 @@ export const ToDo = ({
     item: { todoID },
   }));
   return (
-    <li ref={drag}>
-      <label htmlFor="Change Todo Status">
+    <TodoStyled shouldCross={status} ref={drag}>
+      <label>
         <input
           type="checkbox"
           checked={status}
           onChange={() => updateTodoStatus(todoID)}
         />
+        <span></span>
       </label>
       <p>{todoText}</p>
-      <button onClick={() => deleteTodo(todoID)}>X</button>
-    </li>
+      <button onClick={() => deleteTodo(todoID)}>
+        <Cross />
+      </button>
+    </TodoStyled>
   );
 };

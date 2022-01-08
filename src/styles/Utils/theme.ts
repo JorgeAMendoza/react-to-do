@@ -16,6 +16,7 @@ const lightTheme: DefaultTheme = {
   },
   todo: {
     backgroundColor: '#fff ',
+    borderColor: '#E3E4F1',
   },
 };
 
@@ -31,6 +32,7 @@ const darkTheme: DefaultTheme = {
   },
   todo: {
     backgroundColor: '#25273D',
+    borderColor: '#393A4B',
   },
 };
 

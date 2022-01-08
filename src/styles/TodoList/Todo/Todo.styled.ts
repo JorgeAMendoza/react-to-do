@@ -12,6 +12,10 @@ export const TodoStyled = styled.li<TodoStyledProps>`
   align-items: center;
   border-bottom: 1px solid ${({ theme }) => theme.todo.borderColor};
 
+  &:first-child {
+    border-radius: 5px 5px 0 0;
+  }
+
   p {
     font-size: 1.6rem;
     text-decoration: ${({ shouldCross }) =>

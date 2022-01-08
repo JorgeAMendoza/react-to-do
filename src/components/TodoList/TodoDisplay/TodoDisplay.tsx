@@ -1,6 +1,7 @@
 import { ToDo } from './Todo';
 import { TodoFilter } from './TodoFilter';
 import { TodoDisplayProps } from '../../../types/TodoProps/todo-display-props';
+import { TodoDisplayStyled } from '../../../styles/TodoList/TodoDisplay.styled';
 
 export const TodoDisplay = ({
   todoList,
@@ -10,7 +11,7 @@ export const TodoDisplay = ({
   updateTodoStatus,
 }: TodoDisplayProps) => {
   return (
-    <section>
+    <TodoDisplayStyled>
       <ul>
         {todoList.map((item) => (
           <ToDo
@@ -28,6 +29,6 @@ export const TodoDisplay = ({
         clearCompleted={clearCompleted}
         setFilter={setFilter}
       />
-    </section>
+    </TodoDisplayStyled>
   );
 };

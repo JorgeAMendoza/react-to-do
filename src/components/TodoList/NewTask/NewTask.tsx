@@ -33,6 +33,7 @@ export const NewTask = ({ updateTaskList }: newTaskProps) => {
       >
         <label htmlFor="Task Status">
           <input
+            id="Task Status"
             type="checkbox"
             name="taskStatus"
             checked={taskStatus}
@@ -41,6 +42,7 @@ export const NewTask = ({ updateTaskList }: newTaskProps) => {
               else setTaskStatus(e.target.checked);
             }}
           />
+          <span></span>
         </label>
 
         <label htmlFor="New Task Text">

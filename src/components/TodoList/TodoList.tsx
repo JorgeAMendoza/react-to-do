@@ -4,6 +4,7 @@ import { TodoDisplay } from './TodoDisplay/TodoDisplay';
 import { TodoItem } from '../../types/Todo/todo-type';
 import { filterState } from '../../types/Todo/filter-state';
 import { todoListMethods } from '../../utils/todo-list/todo-list-methods';
+import { Container } from '../../styles/Utils/Container.styled';
 
 const listMethods = todoListMethods();
 
@@ -36,14 +37,16 @@ export const TodoList = () => {
 
   return (
     <main>
-      <NewTask updateTaskList={insertNewTodo} />
-      <TodoDisplay
-        todoList={generateTodoList()}
-        setFilter={changeTodoListFilter}
-        deleteTodo={deleteTodo}
-        clearCompleted={clearCompletedTodos}
-        updateTodoStatus={updateTodoStatus}
-      />
+      <Container>
+        <NewTask updateTaskList={insertNewTodo} />
+        <TodoDisplay
+          todoList={generateTodoList()}
+          setFilter={changeTodoListFilter}
+          deleteTodo={deleteTodo}
+          clearCompleted={clearCompletedTodos}
+          updateTodoStatus={updateTodoStatus}
+        />
+      </Container>
     </main>
   );
 };

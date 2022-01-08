@@ -43,6 +43,11 @@ export const GlobalStyles = createGlobalStyle`
     font-family: inherit;
     border: none;
   }
+
+  ul{
+    list-style: none;
+  }
+
   p,
   li,
   h1,

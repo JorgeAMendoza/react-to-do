@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { TodoItem } from '../../../types/Todo/todo-type';
 import { generateTodoID } from '../../../utils/todo-helpers/generate-id';
+import { StyledNewTask } from '../../../styles/TodoList/NewTodo/NewTask.styled';
 
 type newTaskProps = {
   updateTaskList: (newTask: TodoItem) => void;
@@ -21,7 +22,7 @@ export const NewTask = ({ updateTaskList }: newTaskProps) => {
     return task;
   };
   return (
-    <div>
+    <StyledNewTask>
       <form
         autoComplete="off"
         onSubmit={(e) => {
@@ -32,6 +33,7 @@ export const NewTask = ({ updateTaskList }: newTaskProps) => {
       >
         <label htmlFor="Task Status">
           <input
+            id="Task Status"
             type="checkbox"
             name="taskStatus"
             checked={taskStatus}
@@ -40,6 +42,7 @@ export const NewTask = ({ updateTaskList }: newTaskProps) => {
               else setTaskStatus(e.target.checked);
             }}
           />
+          <span></span>
         </label>
 
         <label htmlFor="New Task Text">
@@ -49,9 +52,10 @@ export const NewTask = ({ updateTaskList }: newTaskProps) => {
             value={inputText}
             onChange={(e) => setInputText(e.target.value)}
             onBlur={(e) => setInputText(e.target.value)}
+            placeholder="Create a new todo..."
           />
         </label>
       </form>
-    </div>
+    </StyledNewTask>
   );
 };

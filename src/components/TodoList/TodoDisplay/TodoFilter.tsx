@@ -1,4 +1,5 @@
 import { TodoFilterProps } from '../../../types/TodoProps/todo-filter-props';
+import { TodoFilterStyled } from '../../../styles/TodoList/TodoFilter/TodoFilter.styled';
 
 export const TodoFilter = ({
   todoCount,
@@ -6,17 +7,28 @@ export const TodoFilter = ({
   setFilter,
 }: TodoFilterProps) => {
   return (
-    <section>
-      <p>{todoCount} items left</p>
+    <TodoFilterStyled>
+      <p className="todo-count">{todoCount} items left</p>
       <div>
-        <button onClick={() => setFilter('all')}>All</button>
-        <button onClick={() => setFilter('active')}>Active</button>
-        <button onClick={() => setFilter('completed')}>Completed</button>
+        <button className="filter-select active" onClick={() => setFilter('all')}>
+          All
+        </button>
+        <button className="filter-select" onClick={() => setFilter('active')}>
+          Active
+        </button>
+        <button
+          className="filter-select"
+          onClick={() => setFilter('completed')}
+        >
+          Completed
+        </button>
       </div>
 
       <div>
-        <button onClick={clearCompleted}>Clear Completed</button>
+        <button className="clear-all" onClick={clearCompleted}>
+          Clear Completed
+        </button>
       </div>
-    </section>
+    </TodoFilterStyled>
   );
 };

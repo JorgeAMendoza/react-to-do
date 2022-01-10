@@ -23,7 +23,7 @@ function App() {
         <GlobalStyles />
         <Header toggleTheme={toggleTheme} themeValue={theme} />
         <TodoList />
-        <p>Drag and drop to reorder list</p>
+        <p className="drag-instructions">Drag and drop to reorder list</p>
       </DndProvider>
     </ThemeProvider>
   );

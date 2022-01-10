@@ -24,6 +24,12 @@ export const GlobalStyles = createGlobalStyle`
     background-size: 100%;
     color:${({ theme }) => theme.color.primary};
   }
+
+  .drag-instructions{
+    text-align: center;
+    margin-top: 4rem;
+  }
+
   a,
   button {
     text-decoration: none;

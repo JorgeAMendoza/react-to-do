@@ -5,4 +5,4 @@ type TodoFilterOwnProps = {
 };
 
 export type TodoFilterProps = TodoFilterOwnProps &
-  Pick<TodoDisplayProps, 'setFilter' | 'clearCompleted'>;
+  Pick<TodoDisplayProps, 'setFilter' | 'clearCompleted' | 'filter'>;

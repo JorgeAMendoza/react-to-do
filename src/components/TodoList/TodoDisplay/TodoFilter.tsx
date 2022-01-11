@@ -7,6 +7,7 @@ export const TodoFilter = ({
   todoCount,
   clearCompleted,
   setFilter,
+  filter,
 }: TodoFilterProps) => {
   const isTablet = useMediaQuery({
     query: device.tablet,
@@ -20,19 +21,23 @@ export const TodoFilter = ({
           {isTablet ? (
             <>
               <button
-                className="filter-select"
+                className={`filter-select ${filter === 'all' ? 'active' : ''}`}
                 onClick={() => setFilter('all')}
               >
                 All
               </button>
               <button
-                className="filter-select"
+                className={`filter-select ${
+                  filter === 'active' ? 'active' : ''
+                }`}
                 onClick={() => setFilter('active')}
               >
                 Active
               </button>
               <button
-                className="filter-select"
+                className={`filter-select ${
+                  filter === 'completed' ? 'active' : ''
+                }`}
                 onClick={() => setFilter('completed')}
               >
                 Completed
@@ -50,16 +55,21 @@ export const TodoFilter = ({
       {!isTablet ? (
         <div className="todo-filter--mobile">
           <button
-            className="filter-select active"
+            className={`filter-select ${filter === 'all' ? 'active' : ''}`}
             onClick={() => setFilter('all')}
           >
             All
           </button>
-          <button className="filter-select" onClick={() => setFilter('active')}>
+          <button
+            className={`filter-select ${filter === 'active' ? 'active' : ''}`}
+            onClick={() => setFilter('active')}
+          >
             Active
           </button>
           <button
-            className="filter-select"
+            className={`filter-select ${
+              filter === 'completed' ? 'active' : ''
+            }`}
             onClick={() => setFilter('completed')}
           >
             Completed

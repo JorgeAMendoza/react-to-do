@@ -42,6 +42,7 @@ export const TodoList = () => {
         <TodoDisplay
           todoList={generateTodoList()}
           setFilter={changeTodoListFilter}
+          filter={filter}
           deleteTodo={deleteTodo}
           clearCompleted={clearCompletedTodos}
           updateTodoStatus={updateTodoStatus}

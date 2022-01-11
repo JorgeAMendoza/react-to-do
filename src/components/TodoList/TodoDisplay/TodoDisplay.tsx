@@ -6,6 +6,7 @@ import { TodoDisplayStyled } from '../../../styles/TodoList/TodoDisplay.styled';
 export const TodoDisplay = ({
   todoList,
   setFilter,
+  filter,
   deleteTodo,
   clearCompleted,
   updateTodoStatus,
@@ -28,6 +29,7 @@ export const TodoDisplay = ({
         todoCount={todoList.length}
         clearCompleted={clearCompleted}
         setFilter={setFilter}
+        filter={filter}
       />
     </TodoDisplayStyled>
   );

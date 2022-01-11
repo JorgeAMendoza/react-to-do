@@ -1,4 +1,4 @@
-import { DefaultTheme } from 'styled-components';
+ import { DefaultTheme } from 'styled-components';
 import lightBackgroundDesktop from '../../assets/images/bg-desktop-light.jpg';
 import lightBackgroundMobile from '../../assets/images/bg-mobile-light.jpg';
 import darkBackgroundDesktop from '../../assets/images/bg-desktop-dark.jpg';

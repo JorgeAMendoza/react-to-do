@@ -1,8 +1,9 @@
 import styled from 'styled-components';
+import { device } from '../../Utils/device';
 
 export const StyledNewTask = styled.div`
   background-color: ${({ theme }) => theme.todo.backgroundColor};
-  padding: 0.6em 0.8em;
+  padding: 0.6em 1em;
   border-radius: 5px;
 
   form {
@@ -90,7 +91,14 @@ export const StyledNewTask = styled.div`
       &::placeholder {
         color: ${({ theme }) => theme.color.secondary};
       }
+      color: ${({ theme }) => theme.color.primary};
       min-width: 22ch;
+      outline: none;
+      font-size: inherit;
+      background-color: ${({ theme }) => theme.todo.backgroundColor};
+      @media screen and ${device.laptop} {
+        font-size: 1.8rem;
+      }
     }
   }
 `;

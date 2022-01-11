@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { device } from '../../Utils/device';
 
 interface TodoStyledProps {
   shouldCross: boolean;
@@ -12,6 +13,18 @@ export const TodoStyled = styled.li<TodoStyledProps>`
   align-items: center;
   border-bottom: 1px solid ${({ theme }) => theme.todo.borderColor};
 
+  @media screen and ${device.laptop} {
+    button {
+      display: none;
+    }
+
+    &:hover {
+      button {
+        display: block;
+      }
+    }
+  }
+
   &:first-child {
     border-radius: 5px 5px 0 0;
   }
@@ -21,6 +34,9 @@ export const TodoStyled = styled.li<TodoStyledProps>`
     text-decoration: ${({ shouldCross }) =>
       shouldCross ? 'line-through' : 'none'};
     opacity: ${({ shouldCross }) => (shouldCross ? '.5' : '1')};
+    @media screen and ${device.laptop} {
+      font-size: 1.8rem;
+    }
   }
 
   button {

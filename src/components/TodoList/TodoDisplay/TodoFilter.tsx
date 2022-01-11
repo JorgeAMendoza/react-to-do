@@ -14,7 +14,7 @@ export const TodoFilter = ({
   });
 
   return (
-    <TodoFilterStyled>
+    <TodoFilterStyled todoCount={todoCount}>
       <div className="todo-filter">
         <p className="todo-count">{todoCount} items left</p>
         <div>

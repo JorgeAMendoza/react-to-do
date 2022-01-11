@@ -1,4 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
+import { device } from './device';
 
 export const GlobalStyles = createGlobalStyle`
   html {
@@ -23,11 +24,18 @@ export const GlobalStyles = createGlobalStyle`
   theme.backgroundColor};
     background-size: 100%;
     color:${({ theme }) => theme.color.primary};
+
+    @media screen and ${device.tablet}{
+      background: url(${({ theme }) =>
+        theme.backgroundImageDesktop}) no-repeat, ${({ theme }) =>
+  theme.backgroundColor};
+    background-size: 100%;
+    }
   }
 
   .drag-instructions{
     text-align: center;
-    margin-top: 4rem;
+    margin-top: 8vw;
   }
 
   a,

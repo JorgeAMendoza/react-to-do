@@ -1,12 +1,17 @@
 import styled from 'styled-components';
 
-export const TodoFilterStyled = styled.section`
+interface TodoFilterStyledProps {
+  todoCount: number;
+}
+
+export const TodoFilterStyled = styled.section<TodoFilterStyledProps>`
   .todo-filter {
     background-color: ${({ theme }) => theme.todo.backgroundColor};
-    border-radius: 0 0 5px 5px;
     padding: 0.8em 1em;
     display: flex;
     justify-content: space-between;
+    border-radius: ${({ todoCount }) =>
+      todoCount === 0 ? '5px' : '0 0 5px 5px'};
 
     &--mobile {
       background-color: ${({ theme }) => theme.todo.backgroundColor};
@@ -14,6 +19,7 @@ export const TodoFilterStyled = styled.section`
       display: flex;
       justify-content: center;
       margin-top: 2rem;
+      border-radius: 5px;
     }
   }
 

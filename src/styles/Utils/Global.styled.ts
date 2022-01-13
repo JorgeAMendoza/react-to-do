@@ -36,6 +36,10 @@ export const GlobalStyles = createGlobalStyle`
   .drag-instructions{
     text-align: center;
     margin-top: 8vw;
+    display:none;
+    @media (hover: hover) and (pointer: fine) {
+      display:block;
+    }
   }
 
   a,

@@ -7,4 +7,4 @@ type TodoOwnProps = {
 };
 
 export type TodoProps = TodoOwnProps &
-  Pick<TodoDisplayProps, 'deleteTodo' | 'updateTodoStatus'>;
+  Pick<TodoDisplayProps, 'deleteTodo' | 'updateTodoStatus' | 'reorderList'>;

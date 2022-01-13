@@ -35,6 +35,9 @@ export const TodoList = () => {
   const updateTodoStatus = (todoID: number) =>
     listMethods.updateTodoStatus(todoID, todoList, setToDoList);
 
+  const reorderList = (todoIdOne: number, todoIdTwo: number) =>
+    listMethods.reorderTodoList(todoIdOne, todoIdTwo, todoList, setToDoList);
+
   return (
     <main>
       <Container>
@@ -46,6 +49,7 @@ export const TodoList = () => {
           deleteTodo={deleteTodo}
           clearCompleted={clearCompletedTodos}
           updateTodoStatus={updateTodoStatus}
+          reorderList={reorderList}
         />
       </Container>
     </main>

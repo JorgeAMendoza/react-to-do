@@ -1,8 +1,7 @@
-import { useDrag } from 'react-dnd';
 import { TodoProps } from '../../../types/TodoProps/todo-props';
 import { Cross } from './Cross';
 import { TodoStyled } from '../../../styles/TodoList/Todo/Todo.styled';
-import { DragEventHandler } from 'react';
+import React from 'react';
 
 export const ToDo = ({
   status,
@@ -10,27 +9,33 @@ export const ToDo = ({
   todoID,
   deleteTodo,
   updateTodoStatus,
+  reorderList,
 }: TodoProps) => {
-  // const [collected, drag, dragPreview] = useDrag(() => ({
-  //   type: 'TODO_DRAG',
-  //   item: { todoID },
-  // }));
+  const startDrag = (e: React.DragEvent) => {
+    e.dataTransfer.setData('todoID', todoID.toString());
+  };
+
+  const dragTodoItem = (e: React.DragEvent) => {
+    e.preventDefault();
+  };
+
+  const dropTodoItem = (e: React.DragEvent) => {
+    const dropTarget = todoID;
+    const droppedTarget = Number(e.dataTransfer.getData('todoID'));
+
+    if (dropTarget === droppedTarget) {
+      console.log('Same elements, so no reordering');
+      return;
+    } else reorderList(dropTarget, droppedTarget);
+  };
 
   return (
     <TodoStyled
       shouldCross={status}
       draggable="true"
-      onDragStart={(e) => {
-        console.log('start Drag');
-        e.dataTransfer.setData('todoID', todoID.toString());
-      }}
-      onDragOver={(e) => {
-        e.preventDefault();
-      }}
-      onDrop={(e) => {
-        console.log('Reordering items');
-        console.log(todoID, Number(e.dataTransfer.getData('todoID')));
-      }}
+      onDragStart={startDrag}
+      onDragOver={dragTodoItem}
+      onDrop={dropTodoItem}
     >
       <label>
         <input

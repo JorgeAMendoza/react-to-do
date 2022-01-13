@@ -69,6 +69,29 @@ const todoListMethods = () => {
     }
   };
 
+  const reorderTodoList = (
+    todoIdOne: number,
+    todoIdTwo: number,
+    todoList: TodoItem[],
+    setTodoList: setList
+  ) => {
+    const draggedTodo = todoList.find(
+      (todo) => todo.id === todoIdTwo
+    ) as TodoItem;
+    const filteredList = todoList.filter((todo) => todo.id !== todoIdTwo);
+
+    for (let i = 0; i < filteredList.length; i += 1) {
+      const currentTodo = filteredList[i];
+      if (currentTodo.id === todoIdOne) {
+        const resortedList = filteredList
+          .slice(0, i)
+          .concat(draggedTodo, filteredList.slice(i));
+        setTodoList(resortedList);
+        return;
+      }
+    }
+  };
+
   return {
     insertNewTask,
     clearCompleted,
@@ -76,6 +99,7 @@ const todoListMethods = () => {
     generateTodos,
     deleteTodoItem,
     updateTodoStatus,
+    reorderTodoList,
   };
 };
 

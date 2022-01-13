@@ -10,12 +10,14 @@ export const TodoDisplay = ({
   deleteTodo,
   clearCompleted,
   updateTodoStatus,
+  reorderList,
 }: TodoDisplayProps) => {
   return (
     <TodoDisplayStyled>
       <ul>
         {todoList.map((item) => (
           <ToDo
+            reorderList={reorderList}
             key={item.id}
             status={item.status}
             todoText={item.text}

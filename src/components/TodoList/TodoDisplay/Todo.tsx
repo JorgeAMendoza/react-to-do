@@ -1,7 +1,7 @@
 import { TodoProps } from '../../../types/TodoProps/todo-props';
 import { Cross } from './Cross';
 import { TodoStyled } from '../../../styles/TodoList/Todo/Todo.styled';
-import React from 'react';
+import React, { useState } from 'react';
 
 export const ToDo = ({
   status,
@@ -13,6 +13,8 @@ export const ToDo = ({
 }: TodoProps) => {
   const startDrag = (e: React.DragEvent) => {
     e.dataTransfer.setData('todoID', todoID.toString());
+    e.dataTransfer.dropEffect = 'move';
+    e.dataTransfer.effectAllowed = 'move';
   };
 
   const dragTodoItem = (e: React.DragEvent) => {

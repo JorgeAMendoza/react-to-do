@@ -1,6 +1,7 @@
 # React Todo Web Application
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Project deployed through [Vercel](https://react-to-do-gules.vercel.app/)
 
 ![Todo Application Desktop Light](./readme-images/todo-desktop-light.png)
 ![Todo Application Desktop Light](./readme-images/todo-desktop-dark.png)
